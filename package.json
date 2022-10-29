@@ -15,12 +15,16 @@
     "@jaames/iro": "^5.5.2",
     "@mui/icons-material": "^5.10.9",
     "@mui/material": "^5.10.11",
+    "@reduxjs/toolkit": "^1.8.6",
     "@types/lodash": "^4.14.186",
     "lodash": "^4.17.21",
     "next": "12.3.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-draggable": "^4.4.5"
+    "react-draggable": "^4.4.5",
+    "react-redux": "^8.0.4",
+    "redux-observable": "^2.0.0",
+    "rxjs": "^7.5.7"
   },
   "devDependencies": {
     "@types/node": "18.11.5",

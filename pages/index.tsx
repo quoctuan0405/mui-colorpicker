@@ -10,6 +10,8 @@ import { Close } from "@mui/icons-material";
 import { ColorPicker } from "../src/components/ColorPicker";
 import { useState } from "react";
 import { Lock } from "@mui/icons-material";
+import { useAppDispatch, useAppSelector } from "../src/redux/hooks";
+import { selectThemeColors, setThemeColors } from "../src/redux/reducer/theme";
 
 export interface DialogTitleProps {
   id: string;
@@ -53,17 +55,13 @@ function PaperComponent(props: PaperProps) {
 }
 
 export default function DraggableDialog() {
+  const dispatch = useAppDispatch();
+
   const [open, setOpen] = useState(false);
   const [activeColorIndex, setActiveColorIndex] = useState<number>(0);
-  const [colors, setColors] = useState<string[]>([
-    "#37de74",
-    "#e0467c",
-    "#3b9cd4",
-    "#8ac221",
-    "#cc5fed",
-    "#e68722",
-  ]);
   const [colorLock, setColorLock] = useState<boolean>(false);
+
+  const colors = useAppSelector(selectThemeColors);
 
   const id = "draggable-dialog-title";
 
@@ -111,7 +109,7 @@ export default function DraggableDialog() {
               <ColorPicker
                 colorLock={colorLock}
                 colors={colors}
-                onChange={(colors) => setColors(colors)}
+                onChange={(colors) => dispatch(setThemeColors(colors))}
                 activeColorIndex={activeColorIndex}
                 onActiveColorIndexChange={(activeColorIndex) =>
                   setActiveColorIndex(activeColorIndex)
